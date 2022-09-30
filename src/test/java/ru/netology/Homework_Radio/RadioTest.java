@@ -101,4 +101,41 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldManualInputRadioStationBelowSetLimits() {
+        Radio radio = new Radio();
+
+        radio.setManualInputRadioStation(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldManualInputRadioStationWithinSetLimits() {
+        Radio radio = new Radio();
+
+        radio.setManualInputRadioStation(4);
+
+        int expected = 4;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldManualInputRadioStationAboveSetLimits() {
+        Radio radio = new Radio();
+
+        radio.setManualInputRadioStation(10);
+
+        int expected = 0;
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
